@@ -1,5 +1,29 @@
 spring:
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/ethereumwallet}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/ethereum_wallet}
     username: ${DB_USER:root}
     password: ${DB_PASS:root}
+  activemq:
+    broker-url: ${ACTIVEMQ_BROKER_URL:tcp://localhost:61616}
+    user: ${ACTIVEMQ_USER:user}
+    password: ${ACTIVEMQ_PASSWORD:user}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+        check_nullability: true
+
+app:
+  blocks: ${BLOCKS:5}
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.springframework.orm.jpa: DEBUG
+    org.springframework.transaction: DEBUG
+    org.springframework.jdbc: DEBUG
+    org.hibernate.engine.transaction.internal.TransactionImpl: DEBUG
